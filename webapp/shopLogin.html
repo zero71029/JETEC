@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+
+    <!-- <%-- bootstrap的CSS、JS樣式放這裡 --%> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <!-- <%-- jQuery放這裡 --%> -->
+    <script src="/2015_Banner/jquery.min.js"></script>
+    <!-- <%-- Header的CSS、JS樣式放這裡    --%> -->
+    <!-- <%-- footer的CSS、JS樣式放這裡    --%> -->
+    <!-- <%-- 主要的CSS、JS放在這裡--%> -->
+</head>
+<style>
+    /* div {
+        border: 2px solid black;
+    } */
+
+    .mainColor {
+        background: #88c8eb;
+    }
+
+    /*.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}*/
+
+    .center {
+        margin-top: -10px;
+        background: linear-gradient(to bottom, #88c8eb, white);
+        background: -webkit-gradient(​linear, to bottom, #88c8eb, white);
+    }
+
+    .main {
+        padding-top: 50px;
+    }
+
+    .footer {
+        margin: 0px;
+    }
+
+
+    .main .grid-row {
+        border: 1px #aaa solid;
+        position: relative;
+        margin: 0px auto 50px auto;
+        background-color: white;
+        height: 720px;
+        width: 620px;
+        border-radius: 5px;
+    }
+
+    #canvas {
+        position: absolute;
+
+
+    }
+
+    /* ✿海貓食屋✿ */
+    .main .grid-row .loginTitle {
+        font-size: 30px;
+        margin: 40px auto;
+        text-align: center;
+    }
+
+    /* 取消 */
+    .main .grid-row .loginReturn {
+        position: absolute;
+        background-color: #eb4034;
+        border: 1px solid rgba(0, 0, 0, .3);
+        width: 35px;
+        height: 35px;
+        right: -10px;
+        top: -10px;
+        border-radius: 50%;
+        font-size: 1.3rem;
+    }
+
+    .main .grid-row .loginReturn:hover {
+        background: tomato;
+    }
+
+    .main .grid-row form {
+        position: relative;
+    }
+
+
+    .main .grid-row .formCSS {
+        width: 65%;
+        margin: 0 0 30px 10%;
+        border-radius: 5px;
+        line-height: 35px;
+        height: 35px;
+        text-indent: 0.5rem;
+        border: 1px solid #ddd;
+
+    }
+
+    .main .grid-row .formSubmit {
+
+        padding: 7px 25px;
+        font-size: 18px;
+        background: #7de9fa;
+        border: 1px solid #659bcd;
+        border-radius: 5px;
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        width: 350px;
+    }
+
+    .main .grid-row .formSubmit:hover {
+        background: #59d9d7;
+    }
+
+
+    .main .grid-row a {
+        display: inline-block;
+        color: black;
+        text-decoration: underline;
+        margin-left: 50px;
+    }
+
+    .main .grid-row hr {
+        display: inline-block;
+        width: 45%;
+        vertical-align: middle;
+        margin: 20px auto;
+        background: #666;
+
+    }
+
+    .main .grid-row span {
+        line-height: 40px;
+        color: #666;
+
+    }
+
+    .main .grid-row .orblock {
+        line-height: 40px;
+        height: 40px;
+        margin: 35px auto;
+        width: 80%;
+
+    }
+
+    .g-recaptcha {
+
+        width: 50%;
+        margin: 0 auto;
+        display: block;
+    }
+
+    /* 錯誤訊息 */
+    .main .grid-row .error {
+        color: red;
+    }
+
+    .checkerror {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .main .grid-row .forOtherLog {
+        height: 60px;
+        margin: 0 50px;
+        display: inline-flex;
+        justify-content: space-around;
+    }
+
+    /* google登入 */
+    .g-signin2 {
+        display: inline-block;
+
+    }
+
+
+    .main .grid-row .phone {
+        position: relative;
+        display: inline-block;
+        background: #0D6EFD;
+        line-height: 30px;
+        padding: 5px 15px;
+        color: white;
+        width: 200px;
+        height: 50px;
+        border-radius: 5px;
+        margin: 0;
+        margin-right: 45px;
+
+
+    }
+</style>
+
+<body>
+    <!-- 插入頭部 -->
+    <iframe src="shopTop.html" frameborder="0" scrolling="no" width="100%" height="300"></iframe>
+    <!-- 中間部分 -->
+    <div class="center">
+        <canvas id="canvas"></canvas>
+
+        <!-- 網頁中間內文 -->
+        <div class="main">
+            <div class="grid-row" style="height:790px;">
+                <div class="loginTitle"> </div>
+                <!-- <button class="loginReturn" onclick=window.location.href="/OceanCatHouse">X</button> -->
+
+                <form action="/OceanCatHouse/signup/login">
+                    <input class="formCSS" type="email" placeholder='Email' name="email" value="${email}" id="e">
+                    <span class="error">${errors.email}</span>
+                    <input class="formCSS" type="password" placeholder="密碼" name="userpassword" value="${userpassword}"
+                        id="p">
+                    <button type="button" id="autologin" style="width: 5px ;height: 3px"></button>
+                    <span class="error">${errors.userpassword}</span>
+                    <div class="g-recaptcha" data-sitekey="6LdUNRobAAAAAJJakDhDglshLFmwJP1P2c12MBdP"
+                        data-callback='verifyCallback' data-action='ubmit'>Submit
+                    </div>
+                    <br>
+                    <span class="error checkerror">${errors.recaptcha}</span>
+                    <br><input class="formSubmit" type="submit" value="登入">
+
+                </form>
+                <a style='margin-left:125px;line-height:50px;'
+                    href="${pageContext.request.contextPath}/views/forget">忘記密碼?</a>
+
+                <div class='orblock'>
+                    <hr><span> 或是 </span>
+                    <hr>
+                </div>
+
+                <div class='forOtherLog'>
+                    <button type="button" class="phone">使用手機號碼登入</button>
+                    <div class="g-signin2" data-onsuccess="onSignIn" data-width="250" data-height="50"
+                        data-longtitle="true"></div>
+
+
+                </div>
+
+                <span style='margin:15px 0 0 50px;display:inline-block;'>還沒有帳號? </span><a style="color:#1497de;"
+                    href="${pageContext.request.contextPath}/views/signup"> 註冊</a>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="../js/recaptcha.js"></script>
+    <script src="../js/oauth.js"></script>
+    <script>
+        // 紀錄從哪裡來到登錄頁面
+        // var come = document.referrer;
+        // 一鍵登入
+        $('#autologin').click(function () {
+            $('#e').val("AAA@AAA.com");
+            $('#p').val("AAA");
+        })
+        $(".phone").click(function () {
+            window.location.href = "/OceanCatHouse/views/phoneLogin";
+        });
+        var x = [];
+        var y = [];
+        var d = [];//下落速度
+        var size = [];
+        var canvas = document.getElementById("canvas");
+        var w = canvas.width = window.innerWidth;
+        var h = canvas.height = window.innerHeight;
+        var ctx = canvas.getContext("2d");
+
+
+        for (var s = 0; s < 350; s++) {
+
+            x[s] = window.innerWidth * Math.random();
+            y[s] = window.innerHeight * Math.random();
+            d[s] = Math.random() * 3 + 1;
+            size[s] = Math.floor(Math.random() * 3 + 1);
+
+        }
+        setInterval(() => {
+            ctx.clearRect(0, 0, w, h);
+            for (var i = 0; i < 350; i++) {
+                if (i % 3 === 0) {
+                    ctx.fillStyle = "#0063c7";
+                } else if (i % 3 === 2) {
+                    ctx.fillStyle = "#33b5ac";
+                } else {
+                    ctx.fillStyle = "#3340b5";
+                }
+                x[i] = x[i] + Math.random() * 3;
+                y[i] = y[i] + d[i];
+                ctx.fillRect(x[i], y[i], 3, 3);
+                if (y[i] > h) y[i] = 0;
+                if (x[i] > w) x[i] = 0;
+            }
+        }, 100);
+    </script>
+    </div>
+
+
+
+
+
+
+
+    <!-- 插入腳 -->
+    <iframe src="shopBottom.html" frameborder="0" scrolling="no" width="100%" height="650"></iframe>
+
+</body>
+
+</html>
